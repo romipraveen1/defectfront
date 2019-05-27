@@ -1,6 +1,8 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb, Icon, AutoComplete,Modal, Button  } from 'antd';
-import Selects from './Select';
+import {BrowserRouter as Router,Route} from 'react-router-dom';
+import Tablep from './GenConfic/PriorityConfic';
+import EditP from './GenConfic/EditPriority';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -73,12 +75,27 @@ export default class SiderDemo extends React.Component {
               <Breadcrumb.Item>view</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: AutoComplete }}>
+            <Router>
+            <Route path='/' exact strict render={
+                    () =>{
+                       return(  <Tablep/>);
+                     }
+                   }/>
+                       
             
-            
-            
-            <Selects/>
-            
-            
+            <Route path='/Edit' exact strict render={
+                    () =>{
+                       return(  <EditP/>);
+                     }
+                   }/>
+
+<Route path='/Cancel' exact strict render={
+                    () =>{
+                       return(   <Tablep/>);
+                     }
+                   }/>
+                          
+            </Router>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>sgic ©2018 Created by sgic</Footer>
